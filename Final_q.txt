@@ -1,0 +1,27 @@
+SELECT CustomerID, Last_Name, Phone_num, Email
+	FROM Customers_t
+	ORDER BY CustomerID;
+
+SELECT Address, State, Num_bedrooms, p_type, mountain_t.pk_activities 
+	FROM Properties_t NATURAL JOIN mountain_t WHERE
+	properties_t.address = mountain_t.pk_address;
+
+SELECT Address, State, Num_bedrooms, p_type, beach_t.blocks
+	FROM Properties_t NATURAL JOIN beach_t WHERE
+	properties_t.address = beach_t.fk_address;
+	
+SELECT Customers_t.first_name, Customers_t.Last_name, Properties_t.Weekly_rate, Properties_t.state, Properties_t.p_type
+	FROM Properties_t, Agreament_t JOIN Customers_t WHERE
+	Agreament_t.End_date > '2011-12-9';
+
+SELECT fk_property, Properties_t.City
+	From Agreament_t NATURAL JOIN Properties_t WHERE
+	Agreament_t.fk_property = properties_t.address;
+
+SELECT fk_Address, blocks
+	FROM beach_t WHERE
+	blocks < 3;
+
+SELECT pk_address, pk_activities
+	FROM mountain_t WHERE
+	pk_activities = 'as';

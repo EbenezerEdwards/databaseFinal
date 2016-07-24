@@ -1,0 +1,141 @@
+
+INSERT INTO Customers_t
+VALUES
+(1, 'Margaret', 'A', 'Simpson', '505 Amherst Street', 'Nashua', 'NH', '03060', '603 123-4567', 'simpson@comcast.net'),
+
+(2, 'Alan', 'B', 'Beeton', '100 Main Street', 'Nashua', 'NH', '03060', '603 881-1000', 'Beeton@comcast.net'),
+
+(3, 'Thomas', 'G', 'Brown', '10 Daniel Webster', 'Merrimack', 'NH', '03054', '603 881-9000', 'Brown@comncast.net'),
+
+(4, 'Sally', 'A', 'Green', '16 Continental Blvd', 'Merrimack', 'NH', '03054', '603 881-1500', 'Green@comcast.net'),
+
+(5, 'Chris', 'T', 'Lucero', '17 Elm Street', 'Hollis', 'NH', '03049', '603 881-4567', 'Lucero@comcast.net'),
+
+(6, 'Lorenzo', 'T', 'Davis', '22 Hanover Street', 'Manchester', 'NH', '03101', '603 668-2357', 'Davis@comcast.net'),
+
+(7, 'Susan', 'A', 'Martin', '5 Hacket Hill Road', 'Hooksett', 'NH', '03106', '603 668-9623', 'Martin@verizon.net'),
+
+(8, 'Rick', 'J', 'Melton', '100 South Willow Street', 'Manchester', 'NH', '03101', '603 434-1111', 'Melton@verizon.net'),
+
+(9, 'Dick', 'H', 'Gosling', '20 Union Street', 'Manchester', 'NH', '03101', '603 888-5843', 'Gosling@adelphia.net'),
+
+(10, 'Java', 'K', 'Celko', '40 Bridge Street', 'Nashua', 'NH', '03060', '603 881-2000', 'Celko@netway.net'),
+
+(11, 'Alice', 'O', 'OOP', '15 Pearl Street', 'Manchester', 'NH', '03101', '603 668-4567', 'oop@comcast.net'),
+
+(12, 'Java', 'A', 'Script', 'Penny Lane', 'Merrimack', 'NH', '03054', '603 434-8850', 'script@gmail.com');
+
+
+INSERT INTO Properties_t
+VALUES
+('10 Any Street', 'Waterville', 'NH', '03050', 3, 'MNT', '300.00'),
+
+('15 D Street', 'Waterville', 'NH', '03050', 2, 'MNT', '225.00'),
+
+('5 Grove Street', 'North Conway', 'NH', '03860', 5, 'MNT', '230.00'),
+
+('100 RTE 12', 'Lincoln', 'NH', '03251', 4, 'MNT', '200.00'),
+
+('Rte 16', 'Jackson', 'NH', '03846', 2, 'MNT', '150.00'),
+
+('20 Main Street', 'Falmouth', 'MA', '02536', 5, 'Beach', '300.00'),
+
+('15 Central Street', 'Falmouth', 'MA', '02536', 4, 'Beach', '325.00'),
+
+('5 Seapit Road', 'Falmouth', 'Ma', '02536', 2, 'Beach', '400.00'),
+
+('10 Harbor Ave', 'Falmouth', 'Ma', '02536', 3, 'Beach', '225.00'),
+
+('70 Galloupes Pt', 'Swampscott', 'MA', '01907', 1, 'Beach', '500.00');
+
+
+INSERT INTO Agreament_t
+VALUES
+(1, '10 Any Street', '2010-12-26', '2011-1-2', 1),
+
+(2, '5 Grove Street', '2010-12-21', '2010-12-28', 10),
+
+(3, '100 RTE 12', '2011-1-15', '2011-1-22', 3),
+
+(4, 'Rte 16', '2011-2-1', '2011-2-8', 6),
+
+(5, '5 Seapit Road', '2011-6-28', '2011-7-12', 9),
+
+(6, '10 Harbor Ave', '2011-7-12', '2011-7-26', 5),
+
+(7, '20 Main Street', '2011-7-12', '2011-7-26', 4),
+
+(8, '70 Galloupes Pt', '2011-7-19', '2011-8-2', 2),
+
+(9, '15 Central Street', '2011-8-2', '2011-8-16', 1),
+
+(10, '5 Grove Street', '2011-6-14', '2011-6-28', 7),
+
+(11, '10 Any Street', '2011-8-16', '2011-8-30', 9);
+
+
+INSERT INTO Activities_t
+VALUES
+('as', 'skiing'),
+('h', 'hiking'),
+('sw', 'swimming'),
+('sk', 'skating'),
+('cs', 'cross country skiing'),
+('sb', 'snowmobiling');
+
+
+INSERT INTO beach_t
+VALUES
+('20 Main Street', 4),
+('15 Central Street', 2),
+('5 Seapit Road', 2),
+('10 Harbor Ave', 1),
+('70 Galloupes Pt', 0);
+
+
+INSERT INTO mountain_t
+VALUES
+('10 Any Street', 'as'),
+
+('10 Any Street', 'h'),
+
+('10 Any Street', 'cs'),
+
+('15 D Street', 'as'),
+
+('15 D Street', 'h'),
+
+('5 Grove Street', 'as'),
+
+('5 Grove Street', 'h'),
+
+('5 Grove Street', 'sw'),
+
+('5 Grove Street', 'sk'),
+
+('100 RTE 12', 'as'),
+
+('100 RTE 12', 'sk'),
+
+('100 RTE 12', 'sb'),
+
+('Rte 16', 'as'),
+
+('Rte 16', 'cs'),
+
+('Rte 16', 'sk');
+
+
+DESCRIBE Customers_t;
+DESCRIBE Properties_t;
+DESCRIBE Agreament_t;
+DESCRIBE Activities_t; 
+DESCRIBE beach_t;
+DESCRIBE mountain_t;
+
+select * from Customers_t;
+select * from Properties_t;
+select * from Agreament_t;
+select * from Activities_t; 
+select * from beach_t;
+select * from mountain_t;

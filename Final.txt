@@ -1,0 +1,72 @@
+use edwards
+
+DROP TABLE IF EXISTS mountain_t;
+DROP TABLE IF EXISTS beach_t;
+DROP TABLE IF EXISTS activities_t;
+DROP TABLE IF EXISTS Agreament_t;
+DROP TABLE IF EXISTS Properties_t;
+DROP TABLE IF EXISTS Customers_t;
+
+
+CREATE TABLE Customers_t
+( CustomerID integer,
+First_Name varchar(15),
+Middle_initial varchar(1),
+Last_name varchar(20),
+Street_Address varchar(25),
+City varchar(20),
+State varchar(2),
+Zip varchar(5),
+Phone_num varchar(12),
+Email varchar(25),
+constraint pk_CustomerID primary key (CustomerID)
+);
+
+CREATE TABLE Properties_t
+( Address varchar(25),
+City varchar(20), 
+State varchar(20),
+Zip varchar(5),
+Num_bedrooms varchar(2),
+P_type varchar(5),
+Weekly_rate double,
+constraint pk_Address primary key (Address)
+);
+
+CREATE TABLE Agreament_t
+( ContractID integer,
+fk_Property varchar(25),
+Begin_date date,
+End_date date,
+fk_CustomerID integer,
+constraint pk_ContractID primary key (ContractID),
+constraint foreign key FK1(fk_Property) references Properties_t (Address),
+constraint foreign key FK2(fk_CustomerID) references Customers_t (CustomerID)
+);
+
+
+CREATE TABLE Activities_t
+( ActivityID varchar(2), 
+Activities varchar(25),
+constraint pk_ActivityID primary key (ActivityID)
+);
+
+CREATE TABLE beach_t
+( fk_Address varchar(25),
+blocks integer,
+constraint foreign key FK1(fk_Address) references Properties_t (Address)
+);
+
+CREATE TABLE mountain_t
+( pk_Address varchar(25),
+pk_activities varchar(2),
+constraint pk_mountain primary key (pk_Address, pk_activities)
+);
+
+
+DESCRIBE Customers_t;
+DESCRIBE Properties_t;
+DESCRIBE Agreament_t;
+DESCRIBE activities_t;
+DESCRIBE beach_t;
+DESCRIBE mountain_t;

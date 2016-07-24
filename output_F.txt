@@ -1,0 +1,205 @@
+mysql> source final.txt
+Database changed
+--------------
+DROP TABLE IF EXISTS mountain_t
+--------------
+
+Query OK, 0 rows affected (0.05 sec)
+
+--------------
+DROP TABLE IF EXISTS beach_t
+--------------
+
+Query OK, 0 rows affected (0.03 sec)
+
+--------------
+DROP TABLE IF EXISTS activities_t
+--------------
+
+Query OK, 0 rows affected (0.05 sec)
+
+--------------
+DROP TABLE IF EXISTS Agreament_t
+--------------
+
+Query OK, 0 rows affected (0.03 sec)
+
+--------------
+DROP TABLE IF EXISTS Properties_t
+--------------
+
+Query OK, 0 rows affected (0.03 sec)
+
+--------------
+DROP TABLE IF EXISTS Customers_t
+--------------
+
+Query OK, 0 rows affected (0.03 sec)
+
+--------------
+CREATE TABLE Customers_t
+( CustomerID integer,
+First_Name varchar(15),
+Middle_initial varchar(1),
+Last_name varchar(20),
+Street_Address varchar(25),
+City varchar(20),
+State varchar(2),
+Zip varchar(5),
+Phone_num varchar(12),
+Email varchar(25),
+constraint pk_CustomerID primary key (CustomerID)
+)
+--------------
+
+Query OK, 0 rows affected (0.08 sec)
+
+--------------
+CREATE TABLE Properties_t
+( Address varchar(25),
+City varchar(20),
+State varchar(20),
+Zip varchar(5),
+Num_bedrooms varchar(2),
+P_type varchar(5),
+Weekly_rate double,
+constraint pk_Address primary key (Address)
+)
+--------------
+
+Query OK, 0 rows affected (0.11 sec)
+
+--------------
+CREATE TABLE Agreament_t
+( ContractID integer,
+fk_Property varchar(25),
+Begin_date date,
+End_date date,
+fk_CustomerID integer,
+constraint pk_ContractID primary key (ContractID),
+constraint foreign key FK1(fk_Property) references Properties_t (Address),
+constraint foreign key FK2(fk_CustomerID) references Customers_t (CustomerID)
+)
+--------------
+
+Query OK, 0 rows affected (0.13 sec)
+
+--------------
+CREATE TABLE Activities_t
+( ActivityID varchar(2), 
+Activities varchar(25),
+constraint pk_ActivityID primary key (ActivityID)
+)
+--------------
+
+Query OK, 0 rows affected (0.08 sec)
+
+--------------
+CREATE TABLE beach_t
+( fk_Address varchar(25),
+blocks integer,
+constraint foreign key FK1(fk_Address) references Properties_t (Address)
+)
+--------------
+
+Query OK, 0 rows affected (0.09 sec)
+
+--------------
+CREATE TABLE mountain_t
+( pk_Address varchar(25),
+pk_activities varchar(2),
+constraint pk_mountain primary key (pk_Address, pk_activities)
+)
+--------------
+
+Query OK, 0 rows affected (0.09 sec)
+
+--------------
+DESCRIBE Customers_t
+--------------
+
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| CustomerID     | int(11)     | NO   | PRI | 0       |       |
+| First_Name     | varchar(15) | YES  |     | NULL    |       |
+| Middle_initial | varchar(1)  | YES  |     | NULL    |       |
+| Last_name      | varchar(20) | YES  |     | NULL    |       |
+| Street_Address | varchar(25) | YES  |     | NULL    |       |
+| City           | varchar(20) | YES  |     | NULL    |       |
+| State          | varchar(2)  | YES  |     | NULL    |       |
+| Zip            | varchar(5)  | YES  |     | NULL    |       |
+| Phone_num      | varchar(12) | YES  |     | NULL    |       |
+| Email          | varchar(25) | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+--------------
+DESCRIBE Properties_t
+--------------
+
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Address      | varchar(25) | NO   | PRI |         |       |
+| City         | varchar(20) | YES  |     | NULL    |       |
+| State        | varchar(20) | YES  |     | NULL    |       |
+| Zip          | varchar(5)  | YES  |     | NULL    |       |
+| Num_bedrooms | varchar(2)  | YES  |     | NULL    |       |
+| P_type       | varchar(5)  | YES  |     | NULL    |       |
+| Weekly_rate  | double      | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+--------------
+DESCRIBE Agreament_t
+--------------
+
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| ContractID    | int(11)     | NO   | PRI | 0       |       |
+| fk_Property   | varchar(25) | YES  | MUL | NULL    |       |
+| Begin_date    | date        | YES  |     | NULL    |       |
+| End_date      | date        | YES  |     | NULL    |       |
+| fk_CustomerID | int(11)     | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+--------------
+DESCRIBE activities_t
+--------------
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| ActivityID | varchar(2)  | NO   | PRI |         |       |
+| Activities | varchar(25) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+--------------
+DESCRIBE beach_t
+--------------
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| fk_Address | varchar(25) | YES  | MUL | NULL    |       |
+| blocks     | int(11)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+--------------
+DESCRIBE mountain_t
+--------------
+
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| pk_Address    | varchar(25) | NO   | PRI |         |       |
+| pk_activities | varchar(2)  | NO   | PRI |         |       |
++---------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> tee output_FD
